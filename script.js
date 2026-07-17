@@ -8,23 +8,12 @@ console.log(numberButtons, operatorButtons, functionButtons);
 
 input.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-        const inputValue = input.value;
-        input.value = "";
-        console.log(inputValue);
-        if (checkValidity(inputValue)) {
-            calculate(inputValue);
-        }
-
+        runCalculator();
     }
 });
 
 equalsBtn.addEventListener("click", (event) => {
-    const inputValue = input.value;
-    input.value = "";
-    console.log(inputValue);
-    if (checkValidity(inputValue)) {
-        calculate(inputValue);
-    }
+    runCalculator();
 })
 
 for (let i = 0; i < numberButtons.length; i++) {
@@ -36,10 +25,24 @@ for (let i = 0; i < numberButtons.length; i++) {
 }
 
 for (let i = 0; i < operatorButtons.length; i++) {
+    if(operatorButtons[i].textContent === "="){
+        continue;
+    }
     operatorButtons[i].addEventListener("click", () => {
         console.log(operatorButtons[i].textContent)
         input.value += operatorButtons[i].textContent;
     })
+}
+
+for (let i = 0; i < functionButtons.length; i++) {
+    functionButtons[i].addEventListener("click", ()=>{
+        if(functionButtons[i].textContent === "C"){
+            input.value = ""
+        }
+        if(functionButtons[i].textContent === "Del"){
+            input.value = input.value.slice(0,-1);
+        }
+    });
 }
 
 function checkValidity(str) {
@@ -68,7 +71,7 @@ function checkValidity(str) {
     if (!invalid) {
         return true;
     }
-    else{
+    else {
         return false;
     }
 }
@@ -106,4 +109,12 @@ function calculate(operation) {
         }
     }
     input.value = result;
+}
+
+function runCalculator() {
+    const inputValue = input.value;
+    console.log(inputValue);
+    if (checkValidity(inputValue)) {
+        calculate(inputValue);
+    }
 }

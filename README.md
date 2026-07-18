@@ -22,14 +22,6 @@ This project was completed as part of **The Odin Project** Foundations curriculu
 
 🔗 https://www.theodinproject.com/lessons/foundations-calculator
 
-## Preview
-
-Add a screenshot or GIF of the calculator here.
-
-```text
-assets/preview.png
-```
-
 ## Getting Started
 
 Clone the repository:

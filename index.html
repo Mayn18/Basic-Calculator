@@ -6,10 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coral+Pixels&family=Geist+Pixel&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <title>Calculator</title>
 </head>
 
 <body>
+    <div class="Header">
+        <pre class="ascii-art">
+            ╭────────────────────────────────────────────────────────────────────────────────────────────────╮
+            │    █████████            ████                      ████             █████                       │
+            │   ███░░░░░███          ░░███                     ░░███            ░░███                        │
+            │  ███     ░░░   ██████   ░███   ██████  █████ ████ ░███   ██████   ███████    ██████  ████████  │
+            │ ░███          ░░░░░███  ░███  ███░░███░░███ ░███  ░███  ░░░░░███ ░░░███░    ███░░███░░███░░███ │
+            │ ░███           ███████  ░███ ░███ ░░░  ░███ ░███  ░███   ███████   ░███    ░███ ░███ ░███ ░░░  │
+            │ ░░███     ███ ███░░███  ░███ ░███  ███ ░███ ░███  ░███  ███░░███   ░███ ███░███ ░███ ░███      │
+            │  ░░█████████ ░░████████ █████░░██████  ░░████████ █████░░████████  ░░█████ ░░██████  █████     │
+            │   ░░░░░░░░░   ░░░░░░░░ ░░░░░  ░░░░░░    ░░░░░░░░ ░░░░░  ░░░░░░░░    ░░░░░   ░░░░░░  ░░░░░      │
+            │                                                                                                │
+            │                                                                                                │
+            │                                                                                                │
+            ╰────────────────────────────────────────────────────────────────────────────────────────────────╯               
+        </pre>
+    </div>
+
     <div class="main">
         <div class="view-port">
             <input type="text" name="main" id="text-field">
@@ -43,7 +64,23 @@
                 <button class="button-group operator-buttons" id="btn-equals">=</button>
                 <button class="button-group operator-buttons" id="btn-divide">/</button>
             </div>
+
         </div>
+    </div>
+    <div class="footer">
+        <div class="footer-links">
+        <a href="https://github.com/Mayn18" target="_blank" rel="noopener noreferrer" aria-label="GitHub" id="footer-link">
+            <img src="Media/github.png" alt="" class="footer-icon">
+            GitHub
+        </a>
+        <a href="https://www.youtube.com/@MaynToWorld" target="_blank" rel="noopener noreferrer" aria-label="GitHub" id="footer-link">
+            <img src="Media/youtube.png" alt="" class="footer-icon">
+            Youtube
+        </a>
+        <a href="https://www.twitch.tv/mayntoworld" target="_blank" rel="noopener noreferrer" aria-label="GitHub" id="footer-link">
+            <img src="Media/twitch.png" alt="" class="footer-icon">
+            Twitch
+        </a>
     </div>
 </body>
 

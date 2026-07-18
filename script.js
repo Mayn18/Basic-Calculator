@@ -3,6 +3,8 @@ const numberButtons = document.querySelectorAll(".num-buttons");
 const operatorButtons = document.querySelectorAll(".operator-buttons");
 const functionButtons = document.querySelectorAll(".function-buttons");
 const equalsBtn = document.querySelector("#btn-equals");
+const operators = "+-/*"
+const numbers = "1234567890. "
 
 console.log(numberButtons, operatorButtons, functionButtons);
 
@@ -25,30 +27,46 @@ for (let i = 0; i < numberButtons.length; i++) {
 }
 
 for (let i = 0; i < operatorButtons.length; i++) {
-    if(operatorButtons[i].textContent === "="){
+    let indexOfOperator = 0;
+    if (operatorButtons[i].textContent === "=") {
         continue;
     }
     operatorButtons[i].addEventListener("click", () => {
+        const currentOperation = input.value;
+        const operator = operatorButtons[i].textContent;
         console.log(operatorButtons[i].textContent)
-        input.value += operatorButtons[i].textContent;
+        if (
+            currentOperation.includes("+") ||
+            currentOperation.includes("-") ||
+            currentOperation.includes("*") ||
+            currentOperation.includes("/")
+        ) {
+            if (checkValidity(currentOperation)) {
+                const result = calculate(currentOperation);
+
+                if (result !== undefined) {
+                    input.value = result + operator;
+                }
+            }
+        } else {
+            input.value += operator;
+        }
     })
 }
 
 for (let i = 0; i < functionButtons.length; i++) {
-    functionButtons[i].addEventListener("click", ()=>{
-        if(functionButtons[i].textContent === "C"){
+    functionButtons[i].addEventListener("click", () => {
+        if (functionButtons[i].textContent === "C") {
             input.value = ""
         }
-        if(functionButtons[i].textContent === "Del"){
-            input.value = input.value.slice(0,-1);
+        if (functionButtons[i].textContent === "Del") {
+            input.value = input.value.slice(0, -1);
         }
     });
 }
 
 function checkValidity(str) {
     let invalid = false;
-    const operators = "+-/*"
-    const numbers = "1234567890. "
     if (
         str.startsWith("+") || str.endsWith("+") ||
         str.startsWith("-") || str.endsWith("-") ||
@@ -77,7 +95,7 @@ function checkValidity(str) {
 }
 
 function calculate(operation) {
-    let operationArr = operation.replaceAll(" ", "").split(/([+\-*/])/);
+    const operationArr = operation.replaceAll(" ", "").split(/([+\-*/])/);
     let result = Number(operationArr[0]);
     console.log(operationArr);
 
@@ -107,14 +125,16 @@ function calculate(operation) {
                 result /= value;
                 break;
         }
+        input.value = result;
     }
-    input.value = result;
+
+    return result;
 }
 
 function runCalculator() {
-    const inputValue = input.value;
-    console.log(inputValue);
-    if (checkValidity(inputValue)) {
-        calculate(inputValue);
+    const currentOperation = input.value;
+    console.log(currentOperation);
+    if (checkValidity(currentOperation)) {
+        calculate(currentOperation);
     }
 }
